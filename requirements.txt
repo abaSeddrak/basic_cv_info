@@ -1,7 +1,6 @@
-git rm -r --cached .
-git add .
-git commit -m "Clean repo before Cloud deploy"
-git push origin main
+# تحديث pip أولًا لتجنب مشاكل التثبيت
+pip>=26.0.1
+
 # مكتبات المشروع
 streamlit==1.29.0
 PyPDF2==3.1.0
