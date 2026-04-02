@@ -2,13 +2,15 @@ import streamlit as st
 from PyPDF2 import PdfReader
 import re
 import spacy
-
+import subprocess
 
 #Title for the project 
 st.title("Uploading cv")
 cv_text = ""
 
-nlp = spacy.load("en_core_web_sm")
+
+
+
 
 #upload the pdf
 file_upload = st.file_uploader("Upload Cv",type=["pdf"])
@@ -26,6 +28,14 @@ if file_upload is not None:
     st.title(cv_text)
 
 #Show basic info
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    # تحميل الموديل لو مش موجود
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+    
 name = cv_text.split("\n")[0]
 st.title("Name")
 st.title(name)
