@@ -1,3 +1,4 @@
+pip>=26.0.1
 streamlit==1.29.0
 PyPDF2==3.1.0
 spacy==3.7.1
